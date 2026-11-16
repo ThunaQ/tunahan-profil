@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Benim Profilim</title>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
@@ -47,11 +48,14 @@
 					</header>
 
 					<section class="mb-4">
-						<details class="border p-2 rounded bg-body-tertiary">
-							<summary class="fw-bold text-primary" style="cursor: pointer;">Daha fazla bilgi için tıklayın</summary>
-							<p class="mt-2 mb-0">Sakarya Üniversitesinde okuyorum.</p>
-							<p class="mt-2 mb-0">Web teknolojileriyle ilgileniyorum.</p>
-						</details>
+						<button id="detay-butonu" class="btn btn-outline-primary fw-bold w-100 mb-2">Daha fazla bilgi için tıklayın 🔽</button>
+						<div id="detay-paneli" class="border rounded bg-body-tertiary" style="display: none;">
+							<div class="p-3">
+								<p>Ben Tunahan, Bilişim Sistemleri Mühendisliği öğrencisiyim.</p>
+								<p>Sakarya Üniversitesinde okuyorum.</p>
+								<p>Yazılım geliştirme ve oyun tasarımı konularına ilgi duyuyorum.</p>
+							</div>
+						</div>
 					</section>
 
 					<section id="projeler" class="mt-5 border-top pt-4">
@@ -167,6 +171,21 @@
 					temaButonu.textContent = "Açık Tema ☀️";
 				}
 			} catch (e) {}
+
+			$(document).ready(function() {
+				$("#detay-butonu").click(function() {
+
+					$(this).toggleClass("açık");
+
+
+					if($(this).hasClass("açık")) {
+						$(this).text("Daha az bilgi göster 🔼");
+					} else {
+						$(this).text("Daha fazla bilgi için tıklayın🔽");
+					}
+					$("#detay-paneli").stop().slideToggle("slow");
+				});
+			});
 		</script>
 	</body>
 </html>
